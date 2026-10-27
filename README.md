@@ -1,47 +1,22 @@
 # Ryan Rickevicius Portfolio
 
-Starter repository for Ryan's sports, data, and business analytics portfolio.
+Repository prepared for a future sports, data, and business analytics portfolio.
 
-## Current status
+## Status
 
-This repository contains a simple static starter page and journal publishing examples. The full portfolio design, Hugo templates, browser editor, and scheduled publishing are the next implementation stage. GitHub Pages has not been enabled as part of repository creation.
+Planning and setup only. Website implementation has not started on the current branch. GitHub Pages and scheduled publishing have not been enabled.
 
-## Repository contents
+## Prepared
 
-- `index.html`: responsive starter page.
-- `.nojekyll`: serves the starter directly through GitHub Pages.
-- `templates/journal/index.md`: draft-first Markdown article template.
-- `docs/hugo-deploy.example.yml`: example Hugo build and scheduled GitHub Pages deployment workflow. This is documentation, not an active workflow.
-- `.gitignore`: excludes generated output, local dependencies, and environment files.
+- Public personal-site repository named `Ryan-Rickevicius.github.io`.
+- `main` default branch.
+- Basic ignore rules for generated files and local settings.
+- [Portfolio brief](docs/PORTFOLIO-BRIEF.md) describing the agreed direction.
 
-## Turn on the starter with GitHub Pages
+## Planned build
 
-In this repository, open **Settings → Pages**. Select **Deploy from a branch**, choose **main** and **/(root)**, and save. Once GitHub finishes deploying, the personal site address will be:
+The website will include Home, Work, an Analytics Journal, About, and Contact. Hugo will generate static pages, Pages CMS will provide a browser editor, and GitHub Actions will handle scheduled publication. Ordinary content updates should require no website code.
 
-https://ryan-rickevicius.github.io/
+The intended website address after building and enabling GitHub Pages is https://ryan-rickevicius.github.io/. The website is not live.
 
-The repository name follows GitHub's personal-site naming convention. The URL above is the intended website address, not confirmation of a live deployment.
-
-## Planned portfolio
-
-- Home, selected work, Analytics Journal, About, and Contact.
-- Hugo-generated pages with the agreed navy-and-teal editorial design.
-- Pages CMS for writing articles, uploading charts and PDFs, editing profile content, and updating the resume through a browser.
-- Support for written analysis and configured interactive chart or dashboard embeds.
-- GitHub Actions checks for scheduled posts every 15 minutes. Scheduled runs are best effort.
-- Real research and shareable analytical outputs, with no invented results.
-
-When the Hugo website is implemented, change the Pages publishing source to **GitHub Actions** and install the verified deployment workflow under `.github/workflows/`. The example workflow requires a complete Hugo project and configured Pages publishing before activation.
-
-## Posting workflow after the full build
-
-Open the browser editor, create a post, write or paste the analysis, add its charts and deliverables, select a publication date, mark it ready, and save. Ordinary publishing should not require website code.
-
-Draft and scheduled files in a public repository are readable in the repository even before website publication. Keep confidential or embargoed material out of public source.
-
-## References
-
-- [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
-- [Hugo](https://gohugo.io/)
-- [Pages CMS](https://pagescms.org/)
-
+Design studies and detailed planning remain in the project workspace. Build and publishing setup will follow when Ryan requests implementation.
