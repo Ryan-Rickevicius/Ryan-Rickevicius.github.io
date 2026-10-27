@@ -1,0 +1,87 @@
+name: Build and deploy portfolio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # UTC; every 15 minutes, away from the start of the hour.
+    - cron: '7,22,37,52 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: '0.168.0'
+  HUGO_ENVIRONMENT: production
+  TZ: America/New_York
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Install Hugo
+        env:
+          TOOL_DIR: ${{ runner.temp }}/hugo-bin
+        run: |
+          set -euo pipefail
+          mkdir -p "$TOOL_DIR"
+          curl --fail --silent --show-error --location \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz" \
+            --output "${RUNNER_TEMP}/hugo.tar.gz"
+          tar -xzf "${RUNNER_TEMP}/hugo.tar.gz" -C "$TOOL_DIR" hugo
+          echo "$TOOL_DIR" >> "$GITHUB_PATH"
+
+      - name: Build published content
+        env:
+          SITE_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          OUTPUT_DIR: ${{ runner.temp }}/portfolio-public
+        run: |
+          set -euo pipefail
+          hugo version
+          hugo --gc --minify \
+            --baseURL "${SITE_BASE_URL%/}/" \
+            --destination "$OUTPUT_DIR" \
+            --buildDrafts=false \
+            --buildFuture=false \
+            --buildExpired=false
+          test -s "$OUTPUT_DIR/index.html"
+
+      - name: Upload generated website
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ${{ runner.temp }}/portfolio-public
+          include-hidden-files: false
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
