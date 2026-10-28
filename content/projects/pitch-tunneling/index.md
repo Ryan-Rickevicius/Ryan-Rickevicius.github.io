@@ -2,8 +2,8 @@
 title: Quantifying the Tunnel
 description: "Undergraduate research into how plate-position change between pitches relates to whiff probability, using 2025 MLB Statcast data."
 summary: "Exploring how changes in pitch location relate to swings and misses."
-date: 2026-10-27T00:00:00-04:00
-publishDate: 2026-10-27T00:00:00-04:00
+date: "2026-10-27T00:00:00"
+publishDate: "2026-10-27T00:00:00"
 draft: false
 weight: 1
 tags:

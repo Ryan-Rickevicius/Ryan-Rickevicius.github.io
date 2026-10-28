@@ -24,7 +24,7 @@ This account connection requires your GitHub sign-in and authorization. Having t
 9. Save. Review the content preview and use the repository's draft-preview workflow when you need to see the actual website layout before publication.
 10. When ready, turn **Keep as draft** off and save. A due article publishes after the next successful build and deployment.
 
-The browser editor's own preview shows content editing. The built website or downloadable draft preview is the reference for final styling. New editor-created posts are stored directly in `content/blog/` as a Markdown file; older folder-based articles remain editable too. You do not need to arrange folders yourself.
+The browser editor's own preview shows content editing. The built website or downloadable draft preview is the reference for final styling. New editor-created posts are stored directly in `content/blog/` as a Markdown file; folder-based articles are supported too. You do not need to arrange folders yourself.
 
 ## Schedule or publish immediately
 
@@ -34,7 +34,7 @@ The browser editor's own preview shows content editing. The built website or dow
 
 **Publish now:** Draft is off and the publication date is now or in the past. Saving triggers the normal build.
 
-The workflow also checks every 15 minutes. GitHub can delay or drop scheduled runs, so publication is approximate and includes build time. Public-repository schedules can be disabled after 60 days without repository activity. If a due post has not appeared, check the **Actions** tab, re-enable a disabled workflow if needed, and run **Build and deploy portfolio** manually.
+The workflow also checks every 15 minutes. GitHub can delay or drop scheduled runs, so publication is approximate and includes build time. Public-repository schedules can be disabled after 60 days without repository activity. If a due post has not appeared, check the **Actions** tab, re-enable a disabled workflow if needed, and run **Publish portfolio** manually.
 
 Saving is the step that sends your edits to GitHub. An article left open with unsaved changes will not publish.
 

@@ -2,8 +2,8 @@
 title: First Pitch Decision Analysis
 description: "First-pitch data collection and analysis completed as a volunteer Sabermetrics Assistant with the Westfield Starfires."
 summary: "Data collection and reporting to support coaching decisions."
-date: 2026-10-27T00:00:00-04:00
-publishDate: 2026-10-27T00:00:00-04:00
+date: "2026-10-27T00:00:00"
+publishDate: "2026-10-27T00:00:00"
 draft: false
 weight: 2
 tags:

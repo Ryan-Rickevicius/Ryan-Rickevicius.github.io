@@ -2,7 +2,7 @@
 title: "{{ replace .File.ContentBaseName `-` ` ` | title }}"
 description: ""
 summary: "A short explanation of the question this article addresses."
-publishDate: "{{ .Date }}"
+publishDate: "{{ now.Format "2006-01-02T15:04:05" }}"
 draft: true
 tags: []
 params:

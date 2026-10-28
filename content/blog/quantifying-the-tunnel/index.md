@@ -2,8 +2,8 @@
 title: Quantifying the Tunnel
 description: "An overview of my undergraduate research into plate-position change and whiff probability."
 summary: "The question and approach behind my research using 2025 MLB Statcast data."
-date: 2026-10-27T00:00:00-04:00
-publishDate: 2026-10-27T00:00:00-04:00
+date: "2026-10-27T00:00:00"
+publishDate: "2026-10-27T00:00:00"
 draft: false
 tags:
   - Baseball

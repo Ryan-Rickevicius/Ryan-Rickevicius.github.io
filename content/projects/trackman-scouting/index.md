@@ -2,8 +2,8 @@
 title: Pitcher Scouting with TrackMan
 description: "Pitcher scouting and live pitch-data validation with Quinnipiac University Baseball."
 summary: "Pitch tendencies, sequencing, and opponent preparation."
-date: 2026-10-27T00:00:00-04:00
-publishDate: 2026-10-27T00:00:00-04:00
+date: "2026-10-27T00:00:00"
+publishDate: "2026-10-27T00:00:00"
 draft: false
 weight: 3
 tags:

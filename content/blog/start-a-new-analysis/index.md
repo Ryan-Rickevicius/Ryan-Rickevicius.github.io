@@ -2,8 +2,8 @@
 title: Start a new analysis
 description: "A private-to-the-website draft example for preparing a journal article."
 summary: "Use this draft to see the structure of a journal post."
-date: 2026-10-27T00:00:00-04:00
-publishDate: 2026-10-27T00:00:00-04:00
+date: "2026-10-27T00:00:00"
+publishDate: "2026-10-27T00:00:00"
 draft: true
 tags:
   - Research
