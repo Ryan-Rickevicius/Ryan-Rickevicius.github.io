@@ -1,21 +1,15 @@
 ---
 title: Start a new analysis
-description: "A private-to-the-website draft example for preparing a journal article."
-summary: "Use this draft to see the structure of a journal post."
-date: "2026-10-27T00:00:00"
-publishDate: "2026-10-27T00:00:00"
+summary: Use this draft as a template for a new journal analysis.
+description: A private-to-the-website draft example for preparing a journal article.
+publishDate: 2026-10-27T00:00:00
 draft: true
 tags:
   - Research
 params:
   category: Analysis
-  tools: []
   featured: false
-  cover: ""
-  downloads: []
-  embeds: []
 ---
-
 This is an authoring example, not a completed analysis. Keep **Draft** enabled while editing. It is excluded from the public website, although files saved to a public GitHub repository remain visible in the repository.
 
 ## The question
@@ -26,11 +20,13 @@ Explain what you wanted to investigate and the decision it could inform.
 
 Identify the source, period, sample, and preparation. Describe the analysis and your own contribution.
 
+
 | Item | What to describe |
-| --- | --- |
+| ----------- | -------------------------------- |
 | Data source | Where the observations came from |
 | Sample | What was included or excluded |
 | Method | How the question was examined |
+
 
 ## Findings
 
