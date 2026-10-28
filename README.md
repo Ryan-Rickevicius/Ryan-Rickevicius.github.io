@@ -4,7 +4,7 @@ Sports, data, and business analytics portfolio with an Analytics Journal.
 
 ## Website and editor
 
-- Website: https://ryan-rickevicius.github.io/
+- Website: https://ryanrickevicius.com/
 - Content editor: https://app.pagescms.org/
 - Repository: https://github.com/Ryan-Rickevicius/Ryan-Rickevicius.github.io
 
