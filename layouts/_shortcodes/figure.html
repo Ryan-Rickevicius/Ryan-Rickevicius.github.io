@@ -1,0 +1,5 @@
+{{- $src := .Get "src" -}}
+{{- $media := partial "resolve-media.html" (dict "page" .Page "path" $src) -}}
+{{- if $media.valid -}}
+<figure class="content-figure{{ if eq (.Get "wide") "true" }} content-figure--wide{{ end }}"><img src="{{ $media.url | safeURL }}" alt="{{ .Get "alt" }}" loading="lazy" decoding="async">{{ with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>
+{{- else -}}{{ errorf "Cannot resolve figure %q in %s" $src .Page.File.Path }}{{- end -}}

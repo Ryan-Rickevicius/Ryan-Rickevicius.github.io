@@ -1,0 +1,10 @@
+{{ define "main" }}{{ $p := hugo.Data.profile }}
+<div class="wrap page-shell contact-page">
+  <header class="contact-heading"><div><p class="eyebrow">Contact</p><h1>{{ .Params.headline | default "Let's talk analytics." }}</h1><p class="page-deck">{{ $p.internship }}</p><div class="article-body">{{ .Content }}</div></div><aside><p class="eyebrow">Based in</p><p>{{ $p.location }}</p><p class="eyebrow">Studying at</p><p>{{ $p.university }}</p></aside></header>
+  <section class="contact-methods" aria-label="Contact and resume">
+    <div class="contact-method"><span class="contact-icon" aria-hidden="true">✉</span><div><p class="eyebrow">Email</p><h2><a href="mailto:{{ $p.email }}">{{ $p.email }}</a></h2><p>For opportunities, questions, and project conversations.</p></div><a class="button" href="mailto:{{ $p.email }}">Email Ryan ↗</a></div>
+    <div class="contact-method"><span class="contact-icon linkedin-icon" aria-hidden="true">in</span><div><p class="eyebrow">LinkedIn</p><h2>{{ $p.name }}</h2><a href="{{ $p.linkedin }}">{{ strings.TrimSuffix "/" (strings.TrimPrefix "https://www." $p.linkedin) }}</a></div><a class="button button-outline" href="{{ $p.linkedin }}">Connect on LinkedIn ↗</a></div>
+    <div class="contact-method resume-method"><span class="contact-icon" aria-hidden="true">↧</span><div><h2>A closer look at my background</h2><p>Education, experience, research, and analytical skills.</p></div><a class="text-link" href="{{ strings.TrimPrefix "/" $p.resume | relURL }}">Download resume ↗</a></div>
+  </section>
+  <section class="section-space"><h2>Explore my work</h2><div class="work-pair"><a class="explore-link" href="{{ "projects/" | relURL }}"><div><h3>Selected work</h3><p>Research, scouting, and practical analysis.</p></div><span aria-hidden="true">↗</span></a><a class="explore-link" href="{{ "blog/" | relURL }}"><div><h3>Analytics Journal</h3><p>Notes, methods, and deliverables.</p></div><span aria-hidden="true">↗</span></a></div></section>
+</div>{{ end }}

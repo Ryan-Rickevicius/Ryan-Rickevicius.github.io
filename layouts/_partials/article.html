@@ -1,0 +1,25 @@
+{{- $isProject := eq .Section "projects" -}}
+<article class="wrap page-shell article-page{{ if $isProject }} project-page{{ end }}">
+  <header class="article-header">
+    <a class="back-link" href="{{ if $isProject }}{{ "projects/" | relURL }}{{ else }}{{ "blog/" | relURL }}{{ end }}">{{ if $isProject }}Work{{ else }}Journal{{ end }} <span aria-hidden="true">/</span> {{ .Params.category | default (cond $isProject "Case study" "Analysis") }}</a>
+    <p class="eyebrow">{{ .Params.category | default (cond $isProject "Selected work" "Analytics Journal") }}{{ with .Params.role }} · {{ . }}{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="article-deck">{{ . }}</p>{{ end -}}
+    <div class="article-meta"><span>{{ .Params.author | default hugo.Data.profile.name | default "Ryan Rickevicius" }}</span>{{ if not .PublishDate.IsZero }}<span aria-hidden="true">·</span><time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ .PublishDate.Format "January 2, 2006" }}</time>{{ end }}{{ if .Draft }}<span class="draft-label">Draft preview</span>{{ end }}</div>
+    {{- with .Params.tools }}<ul class="tool-list" aria-label="Tools and data">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end -}}
+  </header>
+  {{ partial "article-cover.html" . }}
+  {{- $tocLinks := findRE `<a ` .TableOfContents -}}
+  <div class="article-layout{{ if ge (len $tocLinks) 3 }} has-toc{{ end }}">
+    <div class="article-body prose">
+      {{ .Content }}
+      {{ partial "article-embeds.html" . }}
+      {{ partial "article-downloads.html" . }}
+    </div>
+    {{- if ge (len $tocLinks) 3 -}}
+    <aside class="article-toc" aria-label="On this page"><p class="eyebrow">On this page</p>{{ .TableOfContents }}</aside>
+    {{- end -}}
+  </div>
+  {{- with .GetTerms "tags" }}<nav class="article-tags" aria-label="Article topics">{{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</nav>{{ end -}}
+  <footer class="article-footer"><a class="back-link" href="{{ if $isProject }}{{ "projects/" | relURL }}{{ else }}{{ "blog/" | relURL }}{{ end }}"><span aria-hidden="true">←</span> {{ if $isProject }}Back to selected work{{ else }}Back to the journal{{ end }}</a></footer>
+</article>

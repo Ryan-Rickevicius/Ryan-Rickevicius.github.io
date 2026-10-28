@@ -1,0 +1,37 @@
+baseURL = 'https://ryan-rickevicius.github.io/'
+title = 'Ryan Rickevicius | Sports and Business Analytics'
+locale = 'en-US'
+timeZone = 'America/New_York'
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+disableKinds = []
+
+[frontmatter]
+  date = ['publishDate', 'date']
+  publishDate = ['publishDate', 'date']
+  lastmod = ['lastmod', 'publishDate', 'date']
+[taxonomies]
+  tag = 'tags'
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+[pagination]
+  pagerSize = 12
+[markup.goldmark.renderer]
+  unsafe = false
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
+[markup.goldmark.extensions]
+  table = true
+[markup.highlight]
+  noClasses = false
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+  ordered = false
+[caches.images]
+  dir = ':cacheDir/images'
+[params]
+  description = 'Baseball research, scouting, and analytics. The portfolio and journal of Ryan Rickevicius, a Quinnipiac University student.'

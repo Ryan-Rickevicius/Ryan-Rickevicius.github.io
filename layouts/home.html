@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ $p := hugo.Data.profile }}
+{{ $projects := (where site.RegularPages "Section" "projects").ByWeight }}
+{{ $featured := first 1 (where $projects "Params.featured" true) }}
+{{ if not $featured }}{{ $featured = first 1 $projects }}{{ end }}
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ .Params.eyebrow | default "Sports · Data · Business Analytics" }}</p>
+      <h1>{{ .Params.headline | default "Applying analytics to the game and the decisions around it." }}</h1>
+      <p class="hero-intro">{{ $p.introduction }}</p>
+      {{ with .Content }}<div class="hero-intro">{{ . }}</div>{{ end }}
+      <p class="internship">{{ $p.internship }}</p>
+      <div class="actions"><a class="button" href="{{ "projects/" | relURL }}">View my work <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ strings.TrimPrefix "/" $p.resume | relURL }}">Download resume <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <figure class="hero-figure"><img src="{{ "images/pitch-location.svg" | relURL }}" width="680" height="480" alt="Schematic of two pitches arriving at different locations in a strike zone."><figcaption>Pitch location and the space between pitches · schematic</figcaption></figure>
+  </section>
+  <div class="credentials"><span>{{ $p.university }}</span><span>Expected {{ $p.graduation }}</span>{{ with $p.skills }}{{ with index . 0 }}<span>{{ delimit .items " · " }}</span>{{ end }}{{ end }}</div>
+  {{ range $featured }}
+  <section class="home-feature section-space">
+    <p class="eyebrow">Featured {{ .Params.category | default "work" }}</p>
+    <div class="feature-layout">
+      <div><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p class="subtle">{{ .Params.organization }}{{ with .Params.role }} · {{ . }}{{ end }}</p><p>{{ .Summary | plainify }}</p><a class="text-link" href="{{ .RelPermalink }}">Explore the project <span aria-hidden="true">↗</span></a></div>
+      <div class="research-notes"><p class="eyebrow">Inside the project</p><dl>{{ with .Params.question }}<div><dt>The question</dt><dd>{{ . }}</dd></div>{{ end }}{{ with .Params.approach }}<div><dt>The approach</dt><dd>{{ . }}</dd></div>{{ end }}{{ with .Params.context }}<div><dt>The context</dt><dd>{{ . }}</dd></div>{{ end }}</dl></div>
+    </div>
+  </section>{{ end }}
+  <section class="section-space">
+    <div class="section-heading"><h2>Analysis with a practical purpose</h2><a href="{{ "projects/" | relURL }}">All work <span aria-hidden="true">↗</span></a></div>
+    <div class="work-pair">{{ range first 2 ($projects | complement $featured) }}<article class="work-preview"><p class="eyebrow">{{ .Params.organization }}</p><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>{{ .Summary | plainify }}</p><a class="text-link" href="{{ .RelPermalink }}">View project <span aria-hidden="true">↗</span></a></article>{{ end }}</div>
+  </section>
+  <section class="section-space latest-section">
+    <div class="section-heading"><div><p class="eyebrow">Notes, methods & deliverables</p><h2>From the journal</h2></div><a href="{{ "blog/" | relURL }}">All writing <span aria-hidden="true">↗</span></a></div>
+    {{ range first 3 (where site.RegularPages "Section" "blog").ByPublishDate.Reverse }}<article class="latest-row"><time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "Jan 2, 2006" }}</time><div><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>{{ .Summary }}</p></div><span class="row-arrow" aria-hidden="true">↗</span></article>{{ else }}<p class="subtle">Research notes and project write-ups will appear here.</p>{{ end }}
+  </section>
+  <section class="home-contact"><div><p class="eyebrow">Get in touch</p><h2>Let's talk analytics.</h2></div><a class="text-link" href="{{ "contact/" | relURL }}">Contact me <span aria-hidden="true">↗</span></a></section>
+</div>
+{{ end }}

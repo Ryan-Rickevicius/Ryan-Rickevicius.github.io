@@ -1,0 +1,11 @@
+{{ $profile := hugo.Data.profile }}
+<header class="site-header wrap">
+  <a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="{{ $profile.name }} home"><span class="monogram" aria-hidden="true">R<span>R</span></span><span>{{ $profile.name }}</span></a>
+  <nav class="site-nav" aria-label="Main navigation">
+    {{ range slice (dict "path" "projects" "label" "Work") (dict "path" "blog" "label" "Journal") (dict "path" "about" "label" "About") (dict "path" "contact" "label" "Contact") }}
+      {{ $active := eq $.Section .path }}{{ $label := .label }}
+      {{ with site.GetPage .path }}<a href="{{ .RelPermalink }}" {{ if $active }}aria-current="page"{{ end }}>{{ $label }}</a>{{ end }}
+    {{ end }}
+    {{ with $profile.resume }}<a class="nav-resume" href="{{ strings.TrimPrefix "/" . | relURL }}">Resume <span class="sr-only">PDF</span></a>{{ end }}
+  </nav>
+</header>

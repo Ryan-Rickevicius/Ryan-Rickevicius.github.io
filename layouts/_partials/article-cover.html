@@ -1,0 +1,14 @@
+{{- with .Params.cover -}}
+  {{- $media := partial "resolve-media.html" (dict "page" $ "path" .) -}}
+  {{- if $media.valid -}}
+    <figure class="article-cover">
+      <img src="{{ $media.url | safeURL }}" alt="{{ $.Params.cover_alt | default "" }}" loading="eager" decoding="async"
+        {{- if and $media.resource (eq $media.resource.ResourceType "image") }}
+          {{- if ne $media.resource.MediaType.SubType "svg" }} width="{{ $media.resource.Width }}" height="{{ $media.resource.Height }}"{{ end }}
+        {{- end }}>
+      {{- with $.Params.cover_caption }}<figcaption>{{ . }}</figcaption>{{ end -}}
+    </figure>
+  {{- else -}}
+    {{- errorf "Cannot resolve cover %q in %s" . $.File.Path -}}
+  {{- end -}}
+{{- end -}}

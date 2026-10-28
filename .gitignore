@@ -1,8 +1,11 @@
 public/
 resources/_gen/
 .hugo_build.lock
-node_modules/
 .DS_Store
 .env
 .env.*
 !.env.example
+node_modules/
+.tools/
+__pycache__/
+*.pyc

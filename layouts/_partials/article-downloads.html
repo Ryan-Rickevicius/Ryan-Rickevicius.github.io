@@ -1,0 +1,21 @@
+{{- $page := . -}}
+{{- with .Params.downloads -}}
+<section class="article-downloads" aria-labelledby="downloads-heading">
+  <h2 id="downloads-heading">Sources &amp; deliverables</h2>
+  <div class="download-list">
+  {{- range . -}}
+    {{- $file := .file | default "" -}}
+    {{- $media := partial "resolve-media.html" (dict "page" $page "path" $file) -}}
+    {{- if $media.valid -}}
+      <a class="download-row" href="{{ $media.url | safeURL }}"{{ if $media.external }} target="_blank" rel="noopener noreferrer"{{ else }} download{{ end }}>
+        <span class="download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v6h5M8 13h8M8 17h6"/></svg></span>
+        <span><strong>{{ .title | default (path.Base $file) }}</strong><small>{{ upper (strings.TrimPrefix "." (path.Ext $file)) }}{{ if $media.external }} · Opens in a new tab{{ end }}</small></span>
+        <span class="download-arrow" aria-hidden="true">↓</span>
+      </a>
+    {{- else -}}
+      {{- errorf "Cannot resolve download %q in %s" $file $page.File.Path -}}
+    {{- end -}}
+  {{- end -}}
+  </div>
+</section>
+{{- end -}}

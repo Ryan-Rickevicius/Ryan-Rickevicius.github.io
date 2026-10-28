@@ -1,0 +1,58 @@
+name: Ryan Rickevicius
+initials: RR
+tagline: Sports, data & business analytics
+introduction: "I'm studying Sport Management and Business Analytics at Quinnipiac University, where I work with baseball data, build scouting reports, and conduct statistical research."
+internship: Seeking a Summer 2027 analytics internship.
+email: ryan.rickevicius@qu.edu
+linkedin: https://www.linkedin.com/in/ryanrickevicius/
+github: https://github.com/Ryan-Rickevicius
+location: East Granby, Connecticut
+university: Quinnipiac University
+school: School of Business
+graduation: May 2028
+gpa: "3.64"
+resume: /resume/ryan-rickevicius-resume.pdf
+education:
+  - degree: B.S. Sport Management
+    school: Quinnipiac University
+    graduation: May 2028
+  - degree: B.S. Business Analytics
+    school: Quinnipiac University
+    graduation: May 2028
+experience:
+  - organization: Quinnipiac Baseball
+    role: Student Manager
+    dates: February 2026 – Present
+    description: Build pitcher scouting reports and capture and validate TrackMan pitch data during live games.
+  - organization: "Quinnipiac Men's Basketball"
+    role: Student Manager
+    dates: September 2025 – Present
+    description: Support individual workouts, game-day operations, and communication among players, coaches, and staff.
+  - organization: Westfield Starfires
+    role: Volunteer Sabermetrics Assistant
+    dates: May – August 2025
+    description: Designed data collection systems and analyzed first-pitch outcomes to inform coaching decisions about player aggression.
+  - organization: Quinnipiac University
+    role: Undergraduate Researcher
+    dates: April 2026
+    description: Developed Plate Distance Differential using MLB Statcast data and presented the research at the Tri-State Sport Management Annual Summit.
+skills:
+  - label: Programming
+    items:
+      - R
+      - Python
+      - SQL
+  - label: Analysis and reporting
+    items:
+      - Microsoft Excel
+      - Financial modeling
+      - Pivot Tables
+  - label: Sports data
+    items:
+      - TrackMan
+      - Scouting reports
+      - Data validation
+interests:
+  - Marathon running
+  - Ultimate frisbee
+  - Baseball and basketball analytics

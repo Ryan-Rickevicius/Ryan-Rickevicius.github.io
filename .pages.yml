@@ -1,0 +1,419 @@
+media:
+  - name: images
+    label: Article images
+    input: assets/uploads/images
+    output: /uploads/images
+    extensions: [png, jpg, jpeg, webp]
+    rename: safe
+  - name: documents
+    label: Article downloads
+    input: assets/uploads/documents
+    output: /uploads/documents
+    extensions: [pdf, csv, xlsx, pptx, zip, txt]
+    rename: safe
+  - name: resume
+    label: Public resume
+    input: static/resume
+    output: /resume
+    extensions: [pdf]
+    rename: safe
+
+components:
+  article_details:
+    type: object
+    label: Article details
+    fields:
+      - name: category
+        label: Format
+        type: select
+        default: Analysis
+        options:
+          values: [Analysis, Research, Report, Reporting, Scouting, Interactive, Methods]
+      - name: tools
+        label: Tools used
+        type: string
+        list: true
+        description: Add only the tools used for this particular work.
+      - name: featured
+        label: Feature this work
+        type: boolean
+        default: false
+      - name: role
+        label: Your role or contribution
+        type: string
+      - name: organization
+        label: Organization or research context
+        type: string
+      - name: period
+        label: When the work took place
+        type: string
+      - name: advisor
+        label: Research advisor or collaborator
+        type: string
+      - name: question
+        label: Main question
+        type: text
+        description: Used in the homepage's featured-project summary when this project is selected.
+      - name: approach
+        label: Analytical approach
+        type: text
+      - name: context
+        label: Data and project context
+        type: text
+      - name: cover
+        label: Cover image
+        type: image
+        options:
+          media: images
+          rename: safe
+      - name: cover_alt
+        label: Cover image description
+        type: string
+        description: Briefly describe what the image shows for readers who cannot see it.
+      - name: cover_caption
+        label: Cover caption
+        type: text
+      - name: downloads
+        label: Downloadable reports and data
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Button label
+            type: string
+            required: true
+          - name: file
+            label: Upload or choose file
+            type: file
+            required: true
+            options:
+              media: documents
+              rename: safe
+      - name: embeds
+        label: Interactive charts and dashboards
+        type: object
+        description: Paste the published embed URL, not a block of HTML or JavaScript.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Chart or dashboard title
+            type: string
+            required: true
+          - name: url
+            label: Published embed URL
+            type: string
+            required: true
+            description: Supports Datawrapper, Flourish iframe URLs, and Tableau Public view URLs. See the content guide for examples.
+            pattern:
+              regex: '^https://(datawrapper\.dwcdn\.net/[^\s<>]+|flo\.uri\.sh/(visualisation|story)/[0-9]+/embed[^\s<>]*|public\.tableau\.com/(views|shared)/[^\s<>]+)$'
+              message: Use a supported HTTPS embed URL from Datawrapper, Flourish, or Tableau Public.
+          - name: caption
+            label: Explanation or takeaway
+            type: text
+
+content:
+  - name: homepage
+    label: Homepage
+    type: file
+    path: content/_index.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: description
+        label: Search description
+        type: text
+      - name: params
+        label: Introduction
+        type: object
+        fields:
+          - name: headline
+            label: Main headline
+            type: string
+          - name: eyebrow
+            label: Small heading above the headline
+            type: string
+      - name: body
+        label: Additional introduction
+        type: rich-text
+        options:
+          format: markdown
+          media: false
+
+  - name: journal
+    label: Analytics Journal
+    type: collection
+    path: content/blog
+    format: yaml-frontmatter
+    subfolders: true
+    exclude: [_index.md]
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, draft, publishDate]
+      sort: [publishDate, title, draft]
+      search: [title, summary, tags]
+      default:
+        sort: publishDate
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: summary
+        label: Preview summary
+        type: text
+        required: true
+        description: One or two sentences for the journal list and homepage.
+      - name: description
+        label: Search description
+        type: text
+        description: Optional. The preview summary is used when this is blank.
+      - name: publishDate
+        label: Publication date and time (Eastern)
+        type: date
+        required: true
+        default: ""
+        description: Choose the intended time in America/New_York. The website interprets this wall-clock time as Eastern, including daylight saving time.
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss"
+      - name: draft
+        label: Keep as draft
+        type: boolean
+        default: true
+        description: Leave on while writing. Turn off when the article is ready to publish at its chosen time.
+      - name: tags
+        label: Topics
+        type: select
+        options:
+          values: [Baseball, Basketball, Business Analytics, Research, Methods]
+          multiple: true
+      - name: params
+        component: article_details
+      - name: body
+        label: Article
+        type: rich-text
+        options:
+          format: markdown
+          media: images
+          rename: safe
+          switcher: true
+
+  - name: projects
+    label: Selected work
+    type: collection
+    path: content/projects
+    format: yaml-frontmatter
+    subfolders: true
+    exclude: [_index.md]
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, draft]
+      sort: [title]
+    fields:
+      - name: title
+        label: Project title
+        type: string
+        required: true
+      - name: summary
+        label: Project summary
+        type: text
+        required: true
+      - name: weight
+        label: Display order
+        type: number
+        default: 10
+        description: Smaller numbers appear first on the Work page.
+      - name: publishDate
+        label: Publication date and time (Eastern)
+        type: date
+        default: ""
+        description: Optional for case studies. Future dates wait until a successful build after the chosen Eastern time.
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss"
+      - name: description
+        label: Search description
+        type: text
+      - name: draft
+        label: Keep as draft
+        type: boolean
+        default: true
+      - name: tags
+        label: Topics
+        type: string
+        list: true
+      - name: params
+        component: article_details
+      - name: body
+        label: Case study
+        type: rich-text
+        options:
+          format: markdown
+          media: images
+          rename: safe
+
+  - name: about
+    label: About page
+    type: file
+    path: content/about/index.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: description
+        type: text
+      - name: params
+        label: Page heading
+        type: object
+        fields:
+          - name: headline
+            label: Main headline
+            type: string
+      - name: body
+        label: Biography
+        type: rich-text
+        options:
+          format: markdown
+          media: images
+
+  - name: contact
+    label: Contact page
+    type: file
+    path: content/contact/index.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: description
+        type: text
+      - name: params
+        label: Page heading
+        type: object
+        fields:
+          - name: headline
+            label: Main headline
+            type: string
+      - name: body
+        label: Contact introduction
+        type: rich-text
+        options:
+          format: markdown
+          media: false
+
+  - name: profile
+    label: Profile, experience and resume
+    type: file
+    path: data/profile.yaml
+    format: yaml
+    fields:
+      - name: name
+        label: Full name
+        type: string
+        required: true
+      - name: initials
+        label: Initials
+        type: string
+      - name: tagline
+        label: Short positioning line
+        type: string
+      - name: introduction
+        label: Homepage introduction
+        type: text
+      - name: internship
+        label: Internship interest
+        type: string
+      - name: email
+        label: Public contact email
+        type: string
+      - name: linkedin
+        label: LinkedIn profile URL
+        type: string
+      - name: github
+        label: GitHub profile URL
+        type: string
+      - name: location
+        label: Public location
+        type: string
+      - name: university
+        type: string
+      - name: school
+        type: string
+      - name: graduation
+        label: Expected graduation
+        type: string
+      - name: gpa
+        label: GPA
+        type: string
+      - name: resume
+        label: Public resume PDF
+        type: file
+        options:
+          media: resume
+          extensions: [pdf]
+          rename: safe
+      - name: education
+        label: Education
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{degree}"
+        fields:
+          - name: degree
+            type: string
+          - name: school
+            type: string
+          - name: graduation
+            type: string
+      - name: experience
+        label: Experience
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{organization}"
+        fields:
+          - name: organization
+            type: string
+          - name: role
+            type: string
+          - name: dates
+            type: string
+          - name: description
+            type: text
+      - name: skills
+        label: Skill groups
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            type: string
+          - name: items
+            label: Tools or skills
+            type: string
+            list: true
+      - name: interests
+        label: Interests
+        type: string
+        list: true

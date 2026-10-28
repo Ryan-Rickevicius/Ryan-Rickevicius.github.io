@@ -1,0 +1,12 @@
+{{ $p := hugo.Data.profile }}
+<footer class="site-footer wrap">
+  <a class="footer-name" href="{{ site.Home.RelPermalink }}">{{ $p.name }}</a>
+  <nav aria-label="Footer navigation">
+    <a href="mailto:{{ $p.email }}">Email</a>
+    <a href="{{ $p.linkedin }}">LinkedIn</a>
+    <a href="{{ $p.github }}">GitHub</a>
+    {{ with $p.resume }}<a href="{{ strings.TrimPrefix "/" . | relURL }}">Resume</a>{{ end }}
+    {{ with site.GetPage "blog" }}<a href="{{ .RelPermalink }}index.xml">RSS</a>{{ end }}
+  </nav>
+  <span class="footer-note">© {{ now.Year }}</span>
+</footer>

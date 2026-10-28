@@ -22,8 +22,8 @@ Lead with the Quantifying the Tunnel research, followed by shareable first-pitch
 
 Routine authoring should use a browser editor with fields for titles, summaries, topics, dates, article content, charts, and downloads. Support written analysis, PDFs, interactive charts, and supported dashboard embeds. Markdown remains the underlying portable format.
 
-The planned system is Hugo, Pages CMS, GitHub Actions, and free GitHub Pages hosting. Scheduled checks should publish due posts approximately every 15 minutes after successful builds. Exact-minute publication is not guaranteed.
+The website uses Hugo, a Pages CMS editor configuration, GitHub Actions, and free GitHub Pages hosting. Scheduled checks should publish due posts approximately every 15 minutes after successful builds. Exact-minute publication is not guaranteed.
 
-## Implementation boundary
+## Implementation
 
-This repository is prepared for the future build. It currently contains no website implementation or active deployment workflow. Start development and connect publishing only when Ryan requests it.
+The repository contains the complete static website, shared article templates, content editor configuration, draft preview workflow, and scheduled GitHub Pages publishing workflow. See README.md and CONTENT-GUIDE.md for setup and routine authoring. Pages CMS requires a one-time repository-owner connection before browser editing can be used.

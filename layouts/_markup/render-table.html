@@ -1,0 +1,6 @@
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable data table">
+<table>
+  <thead>{{ range .THead }}<tr>{{ range . }}<th scope="col"{{ with .Alignment }} class="align-{{ . }}"{{ end }}>{{ .Text }}</th>{{ end }}</tr>{{ end }}</thead>
+  <tbody>{{ range .TBody }}<tr>{{ range . }}<td{{ with .Alignment }} class="align-{{ . }}"{{ end }}>{{ .Text }}</td>{{ end }}</tr>{{ end }}</tbody>
+</table>
+</div>

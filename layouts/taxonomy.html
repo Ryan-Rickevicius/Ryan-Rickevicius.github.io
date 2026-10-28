@@ -1,0 +1,1 @@
+{{ define "main" }}<div class="wrap page-shell"><header class="page-heading"><p class="eyebrow">Browse the journal</p><h1>Topics</h1></header><div class="topic-list">{{ range .Pages }}<a href="{{ .RelPermalink }}">{{ .Title }} <span>{{ len .Pages }}</span></a>{{ end }}</div></div>{{ end }}

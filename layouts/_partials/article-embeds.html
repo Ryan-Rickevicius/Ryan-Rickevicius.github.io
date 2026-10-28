@@ -1,0 +1,21 @@
+{{- $page := . -}}
+{{- with .Params.embeds -}}
+<section class="article-embeds" aria-labelledby="interactives-heading">
+  <h2 id="interactives-heading">Explore the analysis</h2>
+  {{- range . -}}
+    {{- $embed := partial "resolve-embed.html" .url -}}
+    {{- $title := .title | default "Interactive analysis" -}}
+    {{- if $embed.valid -}}
+    <figure class="interactive-figure">
+      <div class="interactive-heading"><h3>{{ $title }}</h3><a href="{{ $embed.url | safeURL }}" target="_blank" rel="noopener noreferrer">Open interactive <span aria-hidden="true">↗</span></a></div>
+      {{- if $embed.supported -}}
+        <iframe class="interactive-frame" src="{{ $embed.src | safeURL }}" title="{{ $title }}" loading="lazy" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+      {{- end -}}
+      {{- with .caption }}<figcaption>{{ . }}</figcaption>{{ end -}}
+    </figure>
+    {{- else -}}
+      {{- errorf "Interactive URL must be a valid HTTPS link in %s: %q" $page.File.Path .url -}}
+    {{- end -}}
+  {{- end -}}
+</section>
+{{- end -}}

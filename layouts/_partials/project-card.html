@@ -1,0 +1,4 @@
+<article class="project-card">
+  {{- with .Params.cover -}}{{ $media := partial "resolve-media.html" (dict "page" $ "path" .) }}{{ if $media.valid }}<a class="project-card-image" href="{{ $.RelPermalink }}" tabindex="-1" aria-hidden="true"><img src="{{ $media.url | safeURL }}" alt="" loading="lazy" decoding="async"></a>{{ end }}{{ end -}}
+  <div class="project-card-copy"><p class="eyebrow">{{ .Params.category | default "Case study" }}</p><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>{{ with .Params.organization }}<p class="project-organization">{{ . }}</p>{{ end }}<p>{{ .Summary | plainify | default .Description | truncate 220 }}</p><a class="text-link" href="{{ .RelPermalink }}">View project <span aria-hidden="true">↗</span></a></div>
+</article>

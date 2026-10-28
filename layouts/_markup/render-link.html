@@ -1,0 +1,16 @@
+{{- $destination := .Destination -}}
+{{- $parsed := urls.Parse $destination -}}
+{{- $external := eq (lower $parsed.Scheme) "https" -}}
+{{- if and (not $parsed.Scheme) (not $parsed.Host) $parsed.Path -}}
+  {{- $media := partial "resolve-media.html" (dict "page" .PageInner "path" $parsed.Path) -}}
+  {{- if $media.valid -}}
+    {{- $destination = $media.url -}}
+  {{- else -}}
+    {{- with .PageInner.GetPage $parsed.Path -}}{{- $destination = .RelPermalink -}}
+    {{- else -}}
+      {{- if hasPrefix $parsed.Path "/" }}{{ $destination = relURL (strings.TrimPrefix "/" $parsed.Path) }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $parsed.Fragment }}{{ $destination = printf "%s#%s" $destination . }}{{ end -}}
+{{- end -}}
+<a href="{{ $destination }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>{{- /* Keep inline whitespace intact. */ -}}

@@ -1,0 +1,25 @@
+{{- /* Resolve only referenced assets. Calling RelPermalink publishes a resource. */ -}}
+{{- $page := .page -}}
+{{- $raw := strings.TrimSpace (printf "%v" (.path | default "")) -}}
+{{- $result := dict "url" "" "resource" false "external" false "valid" false -}}
+{{- if $raw -}}
+  {{- $parsed := urls.Parse $raw -}}
+  {{- if eq (lower $parsed.Scheme) "https" -}}
+    {{- $result = dict "url" $raw "resource" false "external" true "valid" true -}}
+  {{- else if and (not $parsed.Scheme) (not $parsed.Host) -}}
+    {{- $clean := strings.TrimPrefix "/" $parsed.Path -}}
+    {{- if and $clean (not (in (split $clean "/") "..")) -}}
+      {{- $resource := false -}}
+      {{- with $page.Resources.Get $clean -}}{{- $resource = . -}}{{- end -}}
+      {{- if not $resource -}}
+        {{- with resources.Get $clean -}}{{- $resource = . -}}{{- end -}}
+      {{- end -}}
+      {{- if $resource -}}
+        {{- $result = dict "url" $resource.RelPermalink "resource" $resource "external" false "valid" true -}}
+      {{- else if fileExists (printf "static/%s" $clean) -}}
+        {{- $result = dict "url" (relURL $clean) "resource" false "external" false "valid" true -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $result -}}

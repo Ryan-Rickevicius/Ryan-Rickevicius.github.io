@@ -1,0 +1,11 @@
+{{- $media := partial "resolve-media.html" (dict "page" .PageInner "path" .Destination) -}}
+{{- if $media.valid -}}
+  {{- if .IsBlock }}<figure class="content-figure">{{ end -}}
+  <img src="{{ $media.url | safeURL }}" alt="{{ .PlainText }}" loading="lazy" decoding="async"
+    {{- if and $media.resource (eq $media.resource.ResourceType "image") }}
+      {{- if ne $media.resource.MediaType.SubType "svg" }} width="{{ $media.resource.Width }}" height="{{ $media.resource.Height }}"{{ end }}
+    {{- end }}{{ if not .IsBlock }}{{ with .Title }} title="{{ . }}"{{ end }}{{ end }}>
+  {{- if .IsBlock }}{{ with .Title }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>{{ end -}}
+{{- else -}}
+  {{- errorf "Cannot resolve image %q in %s" .Destination .PageInner.File.Path -}}
+{{- end -}}

@@ -1,0 +1,1 @@
+{{ define "main" }}<div class="wrap page-shell"><header class="page-heading"><p class="eyebrow">{{ hugo.Data.profile.name }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-deck">{{ . }}</p>{{ end }}</header><div class="article-body reading-column">{{ .Content }}</div></div>{{ end }}

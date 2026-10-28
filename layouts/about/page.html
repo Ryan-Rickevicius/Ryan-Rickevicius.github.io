@@ -1,0 +1,11 @@
+{{ define "main" }}{{ $p := hugo.Data.profile }}
+<div class="wrap page-shell about-page">
+  <section class="about-intro">
+    <div><p class="eyebrow">About</p><h1>{{ .Params.headline | default "A sports background. An analytical mindset." }}</h1><div class="about-copy article-body">{{ .Content }}</div><div class="actions"><a class="button" href="{{ "projects/" | relURL }}">View my work <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ strings.TrimPrefix "/" $p.resume | relURL }}">Download resume ↗</a></div></div>
+    <aside class="education-panel"><h2>{{ $p.university }}</h2><p class="subtle">{{ $p.school }}</p>{{ range $p.education }}<p class="degree">{{ .degree }}</p>{{ end }}<p class="education-meta">Expected {{ $p.graduation }} · GPA {{ $p.gpa }}</p></aside>
+  </section>
+  <section class="section-space"><h2>Experience in the game</h2><div class="experience-list">{{ range $p.experience }}<article class="experience-row"><p class="experience-dates">{{ .dates }}</p><div><h3>{{ .organization }}</h3><p class="experience-role">{{ .role }}</p><p>{{ .description }}</p></div></article>{{ end }}</div></section>
+  <section class="section-space"><h2>Tools I work with</h2><div class="skills-grid">{{ range $p.skills }}<div><p class="eyebrow">{{ .label }}</p><ul class="plain-list">{{ range .items }}<li>{{ . }}</li>{{ end }}</ul></div>{{ end }}</div></section>
+  <section class="section-space interests"><h2>Beyond the data</h2><ul>{{ range $p.interests }}<li>{{ . }}</li>{{ end }}</ul></section>
+  <section class="home-contact"><p>{{ $p.internship }}</p><a class="text-link" href="{{ "contact/" | relURL }}">Get in touch ↗</a></section>
+</div>{{ end }}

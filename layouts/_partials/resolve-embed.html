@@ -1,0 +1,19 @@
+{{- $raw := strings.TrimSpace (printf "%v" (. | default "")) -}}
+{{- $result := dict "url" "" "src" "" "provider" "" "supported" false "valid" false -}}
+{{- if $raw -}}
+  {{- $parsed := urls.Parse $raw -}}
+  {{- if and (eq (lower $parsed.Scheme) "https") (not $parsed.User) -}}
+    {{- $host := lower $parsed.Host -}}
+    {{- $path := $parsed.Path -}}
+    {{- $result = dict "url" $raw "src" "" "provider" "" "supported" false "valid" true -}}
+    {{- if and (eq $host "datawrapper.dwcdn.net") (findRE `^/[A-Za-z0-9]+/[0-9]+/?$` $path) -}}
+      {{- $result = dict "url" $raw "src" (printf "https://%s%s" $host $path) "provider" "Datawrapper" "supported" true "valid" true -}}
+    {{- else if and (eq $host "flo.uri.sh") (findRE `^/(visualisation|story)/[0-9]+(/embed)?/?$` $path) -}}
+      {{- $path = replaceRE `(/embed)?/?$` "/embed" $path -}}
+      {{- $result = dict "url" $raw "src" (printf "https://%s%s" $host $path) "provider" "Flourish" "supported" true "valid" true -}}
+    {{- else if and (eq $host "public.tableau.com") (findRE `^/(views/[A-Za-z0-9_~.%/-]+|shared/[A-Za-z0-9_~-]+)/?$` $path) -}}
+      {{- $result = dict "url" $raw "src" (printf "https://%s%s?:showVizHome=no&:embed=true" $host $path) "provider" "Tableau Public" "supported" true "valid" true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $result -}}
