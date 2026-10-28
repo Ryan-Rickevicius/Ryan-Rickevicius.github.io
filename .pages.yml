@@ -157,7 +157,7 @@ content:
     exclude: [_index.md]
     filename:
       template: "{primary}.md"
-      field: create
+      field: false
     view:
       primary: title
       fields: [title, draft, publishDate]
@@ -220,7 +220,7 @@ content:
     exclude: [_index.md]
     filename:
       template: "{primary}.md"
-      field: create
+      field: false
     view:
       primary: title
       fields: [title, draft]

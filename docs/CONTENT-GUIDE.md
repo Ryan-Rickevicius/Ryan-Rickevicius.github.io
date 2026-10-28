@@ -14,7 +14,7 @@ This account connection requires your GitHub sign-in and authorization. Having t
 ## Write a journal article
 
 1. Open **Analytics Journal** and choose **New**.
-2. Enter a title and a short preview summary. The editor proposes a filename from the title. Keep that filename once the article is published so its address stays stable.
+2. Enter a title and a short preview summary. The editor creates the filename from the title automatically. Keep the article’s address stable once it is published.
 3. Choose a publication date and time in **Eastern Time**. The site uses America/New_York, including daylight saving time. Enter the intended Eastern wall-clock time even if you are travelling.
 4. Keep **Keep as draft** switched on while working.
 5. Write or paste into **Article**. Use the toolbar for headings, links, lists, images, tables, and formatted code where supported by the editor. Source mode is available for an existing Markdown article, but routine posting does not require it.
