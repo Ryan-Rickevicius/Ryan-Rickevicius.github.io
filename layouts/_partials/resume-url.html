@@ -1,0 +1,8 @@
+{{- $path := strings.TrimPrefix "/" hugo.Data.profile.resume -}}
+{{- $url := $path | relURL -}}
+{{- $file := printf "static/%s" $path -}}
+{{- if os.FileExists $file -}}
+  {{- $version := crypto.SHA256 (os.ReadFile $file) -}}
+  {{- $url = printf "%s?v=%s" $url $version -}}
+{{- end -}}
+{{- return $url -}}
