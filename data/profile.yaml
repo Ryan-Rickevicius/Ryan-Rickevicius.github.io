@@ -22,6 +22,20 @@ education:
     school: Quinnipiac University
     graduation: May 2028
 experience:
+  - organization: Wichita Falls NetBurners Basketball Club
+    role: Basketball Analytics Intern
+    dates: November 2026 to Present
+    description: As a Basketball Analytics Intern with the Wichita Falls NetBurners,
+      I work with game film and statistical data to help coaches better
+      understand how the team and individual players are performing. My role
+      involves tracking key performance metrics, identifying trends in offensive
+      and defensive efficiency, and putting together postgame reports that
+      highlight what the team is doing well and where improvements can be made.
+      I also help monitor player and team performance throughout the season to
+      identify patterns over time. What I enjoy most about this role is being
+      able to take raw data, turn it into meaningful insights, and communicate
+      those findings in a way that helps coaches make more informed decisions on
+      the court.
   - organization: Quinnipiac Baseball
     role: Student Manager
     dates: February 2026 – Present
@@ -61,20 +75,6 @@ experience:
       then shared my findings with the coaching staff. This experience gave me
       the opportunity to build analytical tools from the ground up and see how
       data could be used to influence real decisions during games.
-  - organization: Wichita Falls NetBurners Basketball Club
-    role: Basketball Analytics Intern
-    dates: November 2026 to Present
-    description: As a Basketball Analytics Intern with the Wichita Falls NetBurners,
-      I work with game film and statistical data to help coaches better
-      understand how the team and individual players are performing. My role
-      involves tracking key performance metrics, identifying trends in offensive
-      and defensive efficiency, and putting together postgame reports that
-      highlight what the team is doing well and where improvements can be made.
-      I also help monitor player and team performance throughout the season to
-      identify patterns over time. What I enjoy most about this role is being
-      able to take raw data, turn it into meaningful insights, and communicate
-      those findings in a way that helps coaches make more informed decisions on
-      the court.
 skills:
   - label: Programming
     items:
