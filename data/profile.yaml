@@ -1,12 +1,14 @@
 name: Ryan Rickevicius
 initials: RR
 tagline: Sports, data & business analytics
-introduction: "I'm studying Sport Management and Business Analytics at Quinnipiac University, where I work with baseball data, build scouting reports, and conduct statistical research."
+introduction: I'm studying Sport Management and Business Analytics at Quinnipiac
+  University, where I work with baseball data, build scouting reports, and
+  conduct statistical research.
 internship: Seeking a Summer 2027 analytics internship.
 email: ryan.rickevicius@qu.edu
 linkedin: https://www.linkedin.com/in/ryanrickevicius/
 github: https://github.com/Ryan-Rickevicius
-location: East Granby, Connecticut
+location: Connecticut
 university: Quinnipiac University
 school: School of Business
 graduation: May 2028
@@ -23,25 +25,63 @@ experience:
   - organization: Quinnipiac Baseball
     role: Student Manager
     dates: February 2026 – Present
-    description: Build pitcher scouting reports and capture and validate TrackMan pitch data during live games.
-  - organization: "Quinnipiac Men's Basketball"
+    description: As a Student Manager for Quinnipiac University's Division I
+      baseball program, I work with TrackMan data to help the coaching staff
+      better understand pitcher performance and tendencies. During games, I help
+      collect and verify pitch-tracking data, including pitch type, velocity,
+      and movement, to make sure the information is accurate and reliable. I
+      also use this data to create scouting reports that break down pitching
+      tendencies, pitch sequencing, and performance against different types of
+      hitters. One of my favorite parts of this role is being able to take
+      information collected during games and turn it into useful insights that
+      support scouting, player development, and game preparation.
+  - organization: Quinnipiac Men's Basketball
     role: Student Manager
     dates: September 2025 – Present
-    description: Support individual workouts, game-day operations, and communication among players, coaches, and staff.
+    description: As a Student Manager for Quinnipiac University's Division I men's
+      basketball program, I help support the day-to-day operations of the team,
+      from individual player workouts to game-day preparation. My role involves
+      working closely with players, coaches, and staff to make sure practices,
+      workouts, and games run as smoothly as possible. Being part of a
+      fast-paced college basketball environment has taught me the importance of
+      communication, organization, and attention to detail. What I enjoy most
+      about this experience is being able to contribute behind the scenes while
+      learning how a Division I basketball program operates and how different
+      people work together toward a common goal.
   - organization: Westfield Starfires
     role: Volunteer Sabermetrics Assistant
     dates: May – August 2025
-    description: Designed data collection systems and analyzed first-pitch outcomes to inform coaching decisions about player aggression.
-  - organization: Quinnipiac University
-    role: Undergraduate Researcher
-    dates: April 2026
-    description: Developed Plate Distance Differential using MLB Statcast data and presented the research at the Tri-State Sport Management Annual Summit.
+    description: During my time as a Sabermetrics Assistant with the Westfield
+      Starfires, I focused on using baseball data to help coaches better
+      understand player tendencies and make more informed in-game decisions. One
+      of my main projects involved designing three data collection systems to
+      track first-pitch outcomes and identify how hitters and pitchers
+      approached different situations. I analyzed this information to uncover
+      patterns in swing decisions, plate discipline, and pitcher tendencies,
+      then shared my findings with the coaching staff. This experience gave me
+      the opportunity to build analytical tools from the ground up and see how
+      data could be used to influence real decisions during games.
+  - organization: Wichita Falls NetBurners Basketball Club
+    role: Basketball Analytics Intern
+    dates: November 2026 to Present
+    description: As a Basketball Analytics Intern with the Wichita Falls NetBurners,
+      I work with game film and statistical data to help coaches better
+      understand how the team and individual players are performing. My role
+      involves tracking key performance metrics, identifying trends in offensive
+      and defensive efficiency, and putting together postgame reports that
+      highlight what the team is doing well and where improvements can be made.
+      I also help monitor player and team performance throughout the season to
+      identify patterns over time. What I enjoy most about this role is being
+      able to take raw data, turn it into meaningful insights, and communicate
+      those findings in a way that helps coaches make more informed decisions on
+      the court.
 skills:
   - label: Programming
     items:
       - R
       - Python
       - SQL
+      - Tableau
   - label: Analysis and reporting
     items:
       - Microsoft Excel
